@@ -1,16 +1,26 @@
 var express = require('express');
 var router = express.Router();
 var Circle = require('../models/circle.js');
+var mongodb = require('mongodb');
 var mongoose = require('mongoose');
-// Get Homepage
-// router.get('/', ensureAuthenticated, function(req, res){
-// 	res.render('index');
-// });
+
+
 router.get('/', function(req,res){
   Circle.find({},function(err,docs){
     console.log(docs);
     res.render('index',{
-      circle: docs
+      circle: docs.reverse()
+    });
+  });
+});
+
+router.get('/detail/:id',function(req,res){
+  console.log()
+  Circle.findOne({_id: mongodb.ObjectId(req.params.id)},function(err,docs){
+    if(err){console.log("ERROR");}
+    console.log(docs);
+    res.render('detail',{
+      detail: docs
     });
   });
 });
