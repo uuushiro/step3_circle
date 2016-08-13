@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>LOGINAPP</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation"><a href="/">サークル一覧</a></li>
+        {{#if user}}
+        <li role="presentation"><a>Hello {{user.username}}</a></li>
+        <li role="presentation"><a href="/users/logout">Logout</a></li>
+          {{else}}
+        <li role="presentation"><a href="/users/login">Login</a></li>
+        <li role="presentation"><a href="/users/register">Register</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+    <h3 class="text-muted"><a href="/">サークルファインダー</a></h3>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-12">
+      {{#if success_msg}}
+        <div class="alert alert-success">{{success_msg}}</div>
+      {{/if}}
+
+      {{#if error_msg}}
+        <div class="alert alert-danger">{{error_msg}}</div>
+        </div>
+      {{/if}}
+
+      {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        </div>
+      {{/if}}
+
+
+      {{{body}}}
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2016 CircleFinder, Inc.</p>
+  </footer>
+
+</div> <!-- /container -->
+
+  </body>
+  </html>

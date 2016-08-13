@@ -1,0 +1,19 @@
+<h2 class="page-header">サークル一覧</h2>
+{{#if errors}}
+  {{#each errors}}
+<div class="alert alert-danger">{{msg}}</div>
+  {{/each}}
+{{/if}}
+<form method="post" action="/list">
+  <label>新しいサークルを作成する</label>
+  <input type="text" name="circlename">
+  <input type="submit" value="作成">
+</form>
+
+<ul>
+  {{#each circle}}
+  <li>
+    <a href="/detail/{{_id}}">{{circlename}}</a>
+  </li>
+  {{/each}}
+</ul>
