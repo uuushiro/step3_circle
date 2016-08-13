@@ -1,29 +1,48 @@
 var express = require('express');
 var router = express.Router();
 var Circle = require('../models/circle.js');
+var User = require('../models/user.js');
+
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 
 
 router.get('/', function(req,res){
   Circle.find({},function(err,docs){
-    console.log(docs);
     res.render('index',{
       circle: docs.reverse()
     });
   });
 });
 
+// router.get('/detail/:id',function(req,res){
+//   console.log()
+//   Circle.findOne({_id: mongodb.ObjectId(req.params.id)},function(err,docs){
+//     if(err){console.log("ERROR");}
+//     console.log(docs);
+//     res.render('detail',{
+//       detail: docs
+//     });
+//   });
+// });
+
+
+
+
+
+
 router.get('/detail/:id',function(req,res){
-  console.log()
-  Circle.findOne({_id: mongodb.ObjectId(req.params.id)},function(err,docs){
-    if(err){console.log("ERROR");}
-    console.log(docs);
-    res.render('detail',{
-      detail: docs
+  Circle.findOne({_id: mongodb.ObjectId(req.params.id)})
+  .populate('member','username')
+  .exec(function (err, item) {
+        res.render('detail',{
+            status: 'success',
+            detail: item.circlename,
+            member: item.member
+        });
     });
-  });
 });
+
 
 router.post('/list',ensureAuthenticated, function(req,res){
   var circlename = req.body.circlename;

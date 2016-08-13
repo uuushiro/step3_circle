@@ -1,2 +1,9 @@
 <h3 class="page-header">詳細ページ</h3>
-{{detail.circlename}}
+<p class="circlename">サークル名</p>
+<p class="detailname">{{detail}}</p>
+<p class="introduction">サークル紹介</p>
+<p class="detailintroduction">ppppppppppppppppp</p>
+<p class="member">メンバー</p>
+{{#each member}}
+<p class="detailmember">{{username}}</p>
+{{/each}}

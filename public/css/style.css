@@ -84,3 +84,36 @@ body {
 footer {
   margin-top: 40px;
 }
+
+.circlename {
+  text-align: left;
+  float: left;
+  font-size: 250%;
+}
+.detailname {
+  text-align: center;
+  font-size: 250%;
+}
+
+.introduction {
+  text-align: left;
+  float: left;
+  font-size: 250%;
+}
+
+.detailintroduction {
+  text-align: center;
+  font-size: 250%;
+}
+
+.member {
+  text-align: left;
+  float: left;
+  font-size: 250%;
+}
+
+.detailmember {
+  text-align: center;
+  font-size: 250%;
+}
+p { line-height: 300% }
