@@ -4,11 +4,38 @@
     <title>LOGINAPP</title>
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/style.css" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body>
     <div class="container">
-  <div class="header clearfix">
+
     <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">サークルファインダー</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+          {{#if user}}
+          <li>Hello {{user.username}}</li>
+          <li><a href="/users/logout">Logout</a></li>
+          {{else}}
+          <li><a href="/users/login">Login</a></li>
+          <li><a href="/users/register">Register</a></li>
+          {{/if}}
+          <li><a href="/">サークル一覧</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- <nav>
       <ul class="nav nav-pills pull-right">
         <li role="presentation"><a href="/">サークル一覧</a></li>
         {{#if user}}
@@ -21,7 +48,7 @@
       </ul>
     </nav>
     <h3 class="text-muted"><a href="/">サークルファインダー</a></h3>
-  </div>
+  </div> -->
 
 
   <div class="row">
@@ -32,12 +59,10 @@
 
       {{#if error_msg}}
         <div class="alert alert-danger">{{error_msg}}</div>
-        </div>
       {{/if}}
 
       {{#if error}}
         <div class="alert alert-danger">{{error}}</div>
-        </div>
       {{/if}}
 
 
@@ -50,6 +75,7 @@
   </footer>
 
 </div> <!-- /container -->
-
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
   </body>
   </html>

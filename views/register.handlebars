@@ -1,4 +1,4 @@
-<h2 class="page-header">Register</h2>
+<h3 class="page-header">Register</h3>
 {{#if errors}}
   {{#each errors}}
     <div class="alert alert-danger">{{msg}}</div>
@@ -14,8 +14,8 @@
     <input type="text" class="form-control" placeholder="UserName" name="username">
   </div>
   <div class="form-group">
-  　<label><input type="radio" name="radio_group" id="radio1" value="male">男</label>
-    <label><input type="radio" name="radio_group" id="radio2" value="female">女</label>
+  　<input name="radio_group" type="radio" id="radio1" value="male" /><label for="radio1">男子</label>
+    <input name="radio_group" type="radio" id="radio2" value="female" /><label for="radio2">女子</label>
   </div>
   <div class="form-group">
     <label>Email</label>
