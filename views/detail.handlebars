@@ -1,9 +1,10 @@
 <h3 class="page-header">詳細ページ</h3>
 <p class="circlename">サークル名</p>
-<p class="detailname">{{detail}}</p>
+<p class="detailname">{{detail.circlename}}</p>
 <p class="introduction">サークル紹介</p>
 <p class="detailintroduction">ppppppppppppppppp</p>
 <p class="member">メンバー</p>
 {{#each member}}
 <p class="detailmember">{{username}}</p>
 {{/each}}
+<div class="joinbtn"><input id="join" class="join btn" name="{{detail._id}}"type="button" value="JOIN" /></div>

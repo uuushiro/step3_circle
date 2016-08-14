@@ -15,29 +15,14 @@ router.get('/', function(req,res){
   });
 });
 
-// router.get('/detail/:id',function(req,res){
-//   console.log()
-//   Circle.findOne({_id: mongodb.ObjectId(req.params.id)},function(err,docs){
-//     if(err){console.log("ERROR");}
-//     console.log(docs);
-//     res.render('detail',{
-//       detail: docs
-//     });
-//   });
-// });
 
-
-
-
-
-
-router.get('/detail/:id',function(req,res){
+router.get('/detail/:id',ensureAuthenticated, function(req,res){
   Circle.findOne({_id: mongodb.ObjectId(req.params.id)})
   .populate('member','username')
   .exec(function (err, item) {
         res.render('detail',{
             status: 'success',
-            detail: item.circlename,
+            detail: item,
             member: item.member
         });
     });
@@ -60,7 +45,7 @@ router.post('/list',ensureAuthenticated, function(req,res){
     var newCircle = new Circle({
       circlename: circlename,
       introduction: "",
-      member: req.user
+      members: req.user._id
     });
     Circle.createCircle(newCircle, function(err,circle){
       if(err) throw err;
@@ -69,7 +54,31 @@ router.post('/list',ensureAuthenticated, function(req,res){
     req.flash('success_msg', 'You created new Circle');
     res.redirect('/');
   }
-})
+});
+
+router.post('/detail/join',ensureAuthenticated, function(req,res) {
+  // console.log(req.user._id);
+  // console.log(req.body.circle_id);
+  // Circle.update({_id:req.body.circle_id}, {$push: {member:req.user._id}}, function(err) {});
+  // User.update({_id:req.user._id}, {$push: {join:req.body.circle_id}}, function(err) {});
+  console.log(req.body.circle_id);
+  console.log(req.user._id);
+
+  // var join = {};
+  //   join._id = req.body.circle_id;
+      // ... set fields ...
+  User.update({ _id: req.user._id }, { $push: { joins: req.body.circle_id } },{ upsert: false, multi: false }, function(err) {
+    console.log(err);
+  });
+
+  // var member = {};
+  //     member._id = req.user._id;
+  Circle.update({ _id: req.body.circle_id }, { $push: { members: req.user._id } },{ upsert: false, multi: false }, function(err) {
+    console.log(err);
+  });
+});
+
+
 
 function ensureAuthenticated(req,res,next){
   if(req.isAuthenticated()){

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+var Circle = require('../models/circle.js');
 
 
 
@@ -19,7 +20,9 @@ var UserSchema = mongoose.Schema({
   },
   gender: {
     type: String
-  }
+  },
+  // join: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Circle' }]
+  joins: [String]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

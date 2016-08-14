@@ -116,4 +116,9 @@ footer {
   text-align: center;
   font-size: 250%;
 }
+
+.joinbtn {
+  text-align: center;
+}
+
 p { line-height: 300% }

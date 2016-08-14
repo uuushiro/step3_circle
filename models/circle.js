@@ -9,7 +9,8 @@ var CircleSchema = mongoose.Schema({
   introduction: {
     type: String
   },
-  member: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  // member: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  members: [String]
 });
 
 var Circle = module.exports = mongoose.model('Circle', CircleSchema);
