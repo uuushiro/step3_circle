@@ -1,10 +1,12 @@
 <h3 class="page-header">詳細ページ</h3>
+<button class="goEdit"><a href="/detail/edit/{{circle._id}}">編集</a></button>
 <p class="circlename">サークル名</p>
-<p class="detailname">{{detail.circlename}}</p>
+<p class="detailname">{{circlename}}</p>
 <p class="introduction">サークル紹介</p>
-<p class="detailintroduction">ppppppppppppppppp</p>
+<p class="detailintroduction">{{introduction}}</p>
 <p class="member">メンバー</p>
-{{#each member}}
-<p class="detailmember">{{username}}</p>
-{{/each}}
-<div class="joinbtn"><input id="join" class="join btn" name="{{detail._id}}"type="button" value="JOIN" /></div>
+
+<p class="detailmember">{{members}}</p>
+
+<div class="joinbtn"><input id="join" class="join btn {{active}}" name="{{circle._id}}"type="button" value="JOIN" /></div>
+<script type="text/javascript" src="/js/detail.js"></script>

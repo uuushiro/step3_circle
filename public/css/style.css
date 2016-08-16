@@ -121,4 +121,8 @@ footer {
   text-align: center;
 }
 
+.goEdit {
+  float: right;
+}
+
 p { line-height: 300% }

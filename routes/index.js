@@ -15,17 +15,49 @@ router.get('/', function(req,res){
   });
 });
 
+router.get('/mydetail', ensureAuthenticated,function(req,res){
 
-router.get('/detail/:id',ensureAuthenticated, function(req,res){
-  Circle.findOne({_id: mongodb.ObjectId(req.params.id)})
-  .populate('member','username')
-  .exec(function (err, item) {
-        res.render('detail',{
-            status: 'success',
-            detail: item,
-            member: item.member
-        });
+});
+
+router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
+  
+})
+
+
+router.get('/detail/:id',ensureAuthenticated, function(req,res) {
+  Circle.findOne({_id: req.params.id}, function(err,circle){
+    var members = circle.members;
+
+    if (members.indexOf(req.user._id) >= 0){
+      console.log(err);
+      res.render('detail', {
+        circlename: circle.circlename,
+        members: circle.members,
+        introduction: circle.introduction,
+        circle: circle,
+        active: "active"
+      });
+    } else {
+      console.log(err);
+      res.render('detail', {
+        circlename: circle.circlename,
+        members: circle.members,
+        introduction: circle.introduction,
+        circle: circle,
+        active: ""
+      });
+    }
+  });
+});
+
+router.get('/detail/edit/:id', ensureAuthenticated, function(req,res){
+  Circle.findOne({_id: req.params.id}, function(err,circle){
+    res.render('detail_edit', {
+      circlename: circle.circlename,
+      introduction: circle.introduction,
+      circleId: circle._id
     });
+  });
 });
 
 
@@ -44,7 +76,7 @@ router.post('/list',ensureAuthenticated, function(req,res){
   } else {
     var newCircle = new Circle({
       circlename: circlename,
-      introduction: "",
+      introduction: "編集してサークル紹介文を追加してください。",
       members: req.user._id
     });
     Circle.createCircle(newCircle, function(err,circle){
@@ -57,25 +89,70 @@ router.post('/list',ensureAuthenticated, function(req,res){
 });
 
 router.post('/detail/join',ensureAuthenticated, function(req,res) {
-  // console.log(req.user._id);
   // console.log(req.body.circle_id);
-  // Circle.update({_id:req.body.circle_id}, {$push: {member:req.user._id}}, function(err) {});
-  // User.update({_id:req.user._id}, {$push: {join:req.body.circle_id}}, function(err) {});
-  console.log(req.body.circle_id);
-  console.log(req.user._id);
+  // console.log(req.body.active);
+  // console.log(req.user._id);
 
-  // var join = {};
-  //   join._id = req.body.circle_id;
-      // ... set fields ...
-  User.update({ _id: req.user._id }, { $push: { joins: req.body.circle_id } },{ upsert: false, multi: false }, function(err) {
-    console.log(err);
+  if(req.body.active){
+
+  User.findOne({_id: req.user._id}, function(err,user){
+      var joins = user.joins;
+      joins.some(function(v, i){
+    if (v==req.body.circle_id) joins.splice(i,1);
+});
+    console.log(joins);
+    user.joins = joins;
+      user.save();
   });
 
-  // var member = {};
-  //     member._id = req.user._id;
-  Circle.update({ _id: req.body.circle_id }, { $push: { members: req.user._id } },{ upsert: false, multi: false }, function(err) {
-    console.log(err);
+  Circle.findOne({_id: req.body.circle_id}, function(err,circle){
+      var members = circle.members;
+      members.some(function(v, i){
+    if (v==req.user._id) members.splice(i,1);
+});
+    console.log(members);
+    circle.members = members;
+      circle.save();
   });
+
+} else {
+
+
+  User.findOne({_id: req.user._id}, function(err,user){
+      var joins = user.joins;
+      joins.push(req.body.circle_id);
+    console.log(joins);
+    user.joins = joins;
+      user.save();
+  });
+
+  Circle.findOne({_id: req.body.circle_id}, function(err,circle){
+      var members = circle.members;
+      members.push(req.user._id);
+    console.log(members);
+    circle.members = members;
+      circle.save();
+  });
+
+
+    // User.update({ _id: req.user._id }, { $push: { joins: req.body.circle_id } },{ upsert: false, multi: false }, function(err) {
+    //   console.log(err);
+    // });
+    //
+    // Circle.update({ _id: req.body.circle_id }, { $push: { members: req.user._id } },{ upsert: false, multi: false }, function(err) {
+    //   console.log(err);
+    // });
+}
+
+});
+
+router.post('/detail/edit/:id', ensureAuthenticated, function(req,res){
+  Circle.findOne({_id: req.params.id}, function(err,circle){
+      circle.circlename = req.body.circlename,
+      circle.introduction = req.body.introduction
+      circle.save();
+  });
+  res.redirect('/detail/'+req.params.id);
 });
 
 

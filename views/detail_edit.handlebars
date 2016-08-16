@@ -1,17 +1,13 @@
-<h3 class="page-header">詳細ページ</h3>
+<h3 class="page-header">編集ページ</h3>
 {{detail}}
-<form>
+<form method="post" action="/detail/edit/{{circleId}}">
   <div class="mui-textfield">
-    <input type="text">
-    <label>Input 1</label>
+    <label>サークル名</label>
+    <input type="text" value="{{circlename}}" name="circlename">
   </div>
   <div class="mui-textfield">
-    <input type="text">
-    <label>Input 2</label>
+    <label>サークル紹介</label>
+    <textarea name="introduction">{{introduction}}</textarea>
   </div>
-  <div class="mui-textfield">
-    <textarea></textarea>
-    <label>Textarea</label>
-  </div>
-  <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+  <button class="btn" type="submit" class="mui-btn mui-btn--raised">更新</button>
 </form>
