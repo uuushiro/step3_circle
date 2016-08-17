@@ -1,27 +1,30 @@
 {
-  "name": "loginapp",
-  "version": "1.0.0",
-  "description": "Simple authentication system",
-  "main": "app.js",
+  "name": "circle",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "Yushiro Matsutani",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
     "cookie-parser": "^1.4.1",
+    "debug": "~2.2.0",
     "express": "*",
     "express-handlebars": "*",
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "hbs": "~4.0.0",
+    "http": "0.0.0",
     "mongodb": "*",
     "mongoose": "*",
+    "morgan": "~1.7.0",
     "passport": "*",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "serve-favicon": "~2.3.0",
+    "socket.io": "^1.4.8"
   }
 }

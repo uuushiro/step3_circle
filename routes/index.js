@@ -20,13 +20,14 @@ router.get('/mydetail', ensureAuthenticated,function(req,res){
 });
 
 router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
-  
-})
+    res.render('chat');
+});
 
 
 router.get('/detail/:id',ensureAuthenticated, function(req,res) {
   Circle.findOne({_id: req.params.id}, function(err,circle){
     var members = circle.members;
+    console.log(members);
 
     if (members.indexOf(req.user._id) >= 0){
       console.log(err);
@@ -59,6 +60,8 @@ router.get('/detail/edit/:id', ensureAuthenticated, function(req,res){
     });
   });
 });
+
+
 
 
 router.post('/list',ensureAuthenticated, function(req,res){
