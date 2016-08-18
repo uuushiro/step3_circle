@@ -4,3 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+socket	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^var socket = io.connect(); \/\/ C02. ソケットへの接続$/;"	variable	line:1
+isEnter	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^var isEnter = false;$/;"	variable	line:2
+name	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^var name = $(".nameLabel").attr("name");$/;"	variable	line:3
+appendMsg	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function appendMsg(text) {$/;"	function	line:7
+appendMsg	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function appendMsg(text) {$/;"	function	line:7
+changeLabel	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function changeLabel() {$/;"	function	line:33
+changeLabel	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function changeLabel() {$/;"	function	line:33

@@ -20,9 +20,12 @@ router.get('/mydetail', ensureAuthenticated,function(req,res){
 });
 
 router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
-    res.render('chat');
+  Circle.findOne({_id: req.params.id}, function(err,circle){
+    res.render('chat',{
+      circle: circle
+  });
 });
-
+});
 
 router.get('/detail/:id',ensureAuthenticated, function(req,res) {
   Circle.findOne({_id: req.params.id}, function(err,circle){

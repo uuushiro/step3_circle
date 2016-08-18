@@ -1,32 +1,39 @@
-var socket = io();
+var socket = io.connect(); // C02. ソケットへの接続
+var isEnter = false;
+var name = $(".nameLabel").attr("name");
 
-// chatというイベントを受信したらHTML要素に追加する
-socket.on('chat', function(chat) {
-  var messages = document.getElementById('messages');
-  // 新しいメッセージは既にある要素より上に表示させる
-  var newChat = '<li>' + chat.name + '「' + chat.message + '」</li>';
-  var oldChat = messages.innerHTML;
-  messages.innerHTML = newChat + oldChat;
+// C04. server_to_clientイベント・データを受信する
+socket.on("server_to_client", function(data){appendMsg(data.value)});
+function appendMsg(text) {
+    $("#chatLogs").append("<div>" + text + "</div>");
+}
+
+$("form").submit(function(e) {
+    var message = $("#msgForm").val();
+    var selectRoom = $("#sendButton").attr("name");
+    $("#msgForm").val('');
+
+    if (isEnter) {
+      message = "[" + name + "]: " + message;
+        // C03. client_to_serverイベント・データを送信する
+        socket.emit("client_to_server", {value : message});
+    } else {
+        // name = message;
+        var entryMessage = name + "さんが入室しました。";
+        socket.emit("client_to_server_join", {value : selectRoom});
+        // C05. client_to_server_broadcastイベント・データを送信する
+        socket.emit("client_to_server_broadcast", {value : entryMessage});
+        // C06. client_to_server_personalイベント・データを送信する
+        socket.emit("client_to_server_personal", {value : name});
+        changeLabel();
+    }
+    e.preventDefault();
 });
 
-//送信ボタンにイベントを定義
-var sendButton = document.getElementById('send');
-sendButton.addEventListener('click', sendMessage);
-
-// メッセージを送信する
-function sendMessage() {
-  // 名前と内容を取得する
-  var nameElement = document.getElementById('name');
-  var messageElement = document.getElementById('text');
-  var name = nameElement.value;
-  var message = messageElement.value;
-
-  // chatイベントを送信する
-  socket.emit('chat', {
-    name:name,
-    message:message
-  });
-
-  // 内容をリセットする
-  messageElement.value = '';
+function changeLabel() {
+    $(".nameLabel").text("メッセージ：");
+    $("#rooms").prop("disabled", true);
+    $("button").text("送信");
+    $('#msgForm').show();
+    isEnter = true;
 }

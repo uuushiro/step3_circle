@@ -1,12 +1,20 @@
+<div class="container">
+    <h2>{{circle.circlename}}のトークルーム</h2>
+    <form class="form-inline">
+        <div class="form-group">
+            <!-- <label class="roomLabel" for="rooms">部屋：</label> -->
+            <!-- <select class="form-control" id="rooms">
+                <option value="room01">部屋01</option>
+                <option value="room02">部屋02</option>
+            </select> -->
+            <label class="nameLabel" for="msgForm" name="{{user.username}}">名前：{{user.username}}</label>
+            <input type="text" class="form-control" id="msgForm">
+        </div>
+        <button type="submit" class="btn btn-primary" id="sendButton" name="{{circle._id}}">トークルームに入室</button>
+    </form>
+    <div id="chatLogs"></div>
+</div>
 
-  <h1>title</j1>
 
-  <label for="name">名前</label>
-  <input type="text" id="name"></input>
-  <label for="text">内容</label>
-  <input type="text" id="text"></input>
-  <button id="send">送信</button>
-  <ul id="messages">
-  </ul>
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="/js/chat.js"></script>

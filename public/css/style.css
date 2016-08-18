@@ -125,4 +125,12 @@ footer {
   float: right;
 }
 
+#msgForm {
+  display: none;
+}
+
+#sendButton {
+  margin-left: 20px;
+}
+
 p { line-height: 300% }
