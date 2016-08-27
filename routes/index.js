@@ -29,23 +29,47 @@ router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
 
 router.get('/detail/:id',ensureAuthenticated, function(req,res) {
   Circle.findOne({_id: req.params.id}, function(err,circle){
-    var members = circle.members;
-    console.log(members);
+    var memberIds = circle.members;
+    console.log(memberIds);
+    var members = [];
+//サークルに所属しているメンバーの取得
+    var query = "{$or: [";
+    for(var index in memberIds){
+      query+="{_id:\""+memberIds[index]+"\"}";
+      console.log(memberIds[index]);
+      if(index<memberIds.length-1){
+        query+=",";
+      }
+    }
+    query += "]}";
 
-    if (members.indexOf(req.user._id) >= 0){
-      console.log(err);
+    // console.log(query);
+    // 2. クエリを使用して、データを取得
+    User.find(query, function(err, res) {
+      // 3. 取得したデータからユーザ名を取得
+      for(var index in res){
+        // console.log(res[index].username);
+        members.push(res[index].username);
+      }
+      // console.log(members);
+    });
+
+//ユーザーがこのサークルにJOINしていた時としていない時
+
+//ユーザーがJOINしていない時(JOINボタンを押した)
+    if (memberIds.indexOf(req.user._id) >= 0){
       res.render('detail', {
         circlename: circle.circlename,
-        members: circle.members,
+        members:　members,
         introduction: circle.introduction,
         circle: circle,
         active: "active"
       });
+      //ユーザーがJOINしていた時(退会するを押した)
     } else {
-      console.log(err);
       res.render('detail', {
         circlename: circle.circlename,
-        members: circle.members,
+        members: members,
         introduction: circle.introduction,
         circle: circle,
         active: ""
@@ -85,20 +109,26 @@ router.post('/list',ensureAuthenticated, function(req,res){
       introduction: "編集してサークル紹介文を追加してください。",
       members: req.user._id
     });
-    Circle.createCircle(newCircle, function(err,circle){
-      if(err) throw err;
-      console.log(circle);
-    });
+
+
+//サークルを作成したユーザーのjoinsにサークルidを追加する処理
+    newCircle.save(function(err,circle){
+        User.findOne({_id: req.user._id}, function(err,user){
+            var joins = user.joins;
+            joins.push(circle._id);
+          console.log(joins);
+          user.joins = joins;
+            user.save();
+        });
+      });
     req.flash('success_msg', 'You created new Circle');
     res.redirect('/');
   }
 });
 
 router.post('/detail/join',ensureAuthenticated, function(req,res) {
-  // console.log(req.body.circle_id);
-  // console.log(req.body.active);
-  // console.log(req.user._id);
-
+//JOIN状態にはactiveをもたせておく
+//退会するを押した場合(すでにJOINしていた)
   if(req.body.active){
 
   User.findOne({_id: req.user._id}, function(err,user){
@@ -120,10 +150,8 @@ router.post('/detail/join',ensureAuthenticated, function(req,res) {
     circle.members = members;
       circle.save();
   });
-
+//JOINを押した場合(まだJOINしていなかった場合)
 } else {
-
-
   User.findOne({_id: req.user._id}, function(err,user){
       var joins = user.joins;
       joins.push(req.body.circle_id);
@@ -139,17 +167,7 @@ router.post('/detail/join',ensureAuthenticated, function(req,res) {
     circle.members = members;
       circle.save();
   });
-
-
-    // User.update({ _id: req.user._id }, { $push: { joins: req.body.circle_id } },{ upsert: false, multi: false }, function(err) {
-    //   console.log(err);
-    // });
-    //
-    // Circle.update({ _id: req.body.circle_id }, { $push: { members: req.user._id } },{ upsert: false, multi: false }, function(err) {
-    //   console.log(err);
-    // });
 }
-
 });
 
 router.post('/detail/edit/:id', ensureAuthenticated, function(req,res){

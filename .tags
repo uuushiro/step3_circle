@@ -40,15 +40,6 @@ app	/Users/matsutaniyushiro/step3_circle/app.js	/^var app = express();$/;"	varia
 errorFormatter	/Users/matsutaniyushiro/step3_circle/app.js	/^  errorFormatter: function(param, msg, value) {$/;"	function	line:53
 server	/Users/matsutaniyushiro/step3_circle/app.js	/^var server = http.createServer(function(req, res) {$/;"	variable	line:87
 io	/Users/matsutaniyushiro/step3_circle/app.js	/^var io = socketio.listen(server);$/;"	variable	line:92
-express	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var express = require('express');$/;"	variable	line:1
-router	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var router = express.Router();$/;"	variable	line:2
-Circle	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var Circle = require('..\/models\/circle.js');$/;"	variable	line:3
-User	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:4
-mongodb	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongodb = require('mongodb');$/;"	variable	line:6
-mongoose	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongoose = require('mongoose');$/;"	variable	line:7
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:166
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:166
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:175
 body	/Users/matsutaniyushiro/step3_circle/public/css/style.css	/^body {$/;"	function	line:2
 .header	/Users/matsutaniyushiro/step3_circle/public/css/style.css	/^.header,$/;"	function	line:8
 .marketing	/Users/matsutaniyushiro/step3_circle/public/css/style.css	/^.marketing,$/;"	function	line:9
@@ -89,3 +80,12 @@ appendMsg	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function appe
 appendMsg	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function appendMsg(text) {$/;"	function	line:7
 changeLabel	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function changeLabel() {$/;"	function	line:33
 changeLabel	/Users/matsutaniyushiro/step3_circle/public/js/chat.js	/^function changeLabel() {$/;"	function	line:33
+express	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var express = require('express');$/;"	variable	line:1
+router	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var router = express.Router();$/;"	variable	line:2
+Circle	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var Circle = require('..\/models\/circle.js');$/;"	variable	line:3
+User	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:4
+mongodb	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongodb = require('mongodb');$/;"	variable	line:6
+mongoose	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongoose = require('mongoose');$/;"	variable	line:7
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:184
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:184
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:193
