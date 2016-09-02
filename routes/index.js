@@ -107,7 +107,7 @@ router.post('/list',ensureAuthenticated, function(req,res){
     var newCircle = new Circle({
       circlename: circlename,
       introduction: "編集してサークル紹介文を追加してください。",
-      members: req.user._id
+      members: [req.user._id]
     });
 
 
