@@ -16,7 +16,9 @@ router.get('/', function(req,res){
 });
 
 router.get('/mydetail', ensureAuthenticated,function(req,res){
+  Circle.find({},function(err,docs){
 
+  })
 });
 
 router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){

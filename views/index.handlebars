@@ -1,16 +1,4 @@
-<h3 class="page-header">サークル一覧</h3>
-{{#if errors}}
-  {{#each errors}}
-<div class="alert alert-danger">{{msg}}</div>
-  {{/each}}
-{{/if}}
-<form method="post" action="/list">
-  <label>新しいサークルを作成する</label>
-  <input type="text" name="circlename" placeholder="サークル名">
-  <input class="waves-effect waves-light btn-large" type="submit" value="作成">
-</form>
-
-
+<h3 class="page-header">MyJoinCircle</h3>
 
 {{#each circle}}
 <div class="row">
