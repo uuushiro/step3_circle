@@ -15,8 +15,8 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 
-
-mongoose.connect('mongodb://heroku_rp2b77d0:vgo2sdcnvpr5k61q2eq5jnsetc@ds019946.mlab.com:19946/heroku_rp2b77d0');
+mongoose.connect('mongolab-concave-35654');
+// mongoose.connect('mongodb://heroku_rp2b77d0:vgo2sdcnvpr5k61q2eq5jnsetc@ds019946.mlab.com:19946/heroku_rp2b77d0');
 // mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
