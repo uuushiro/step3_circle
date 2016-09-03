@@ -10,15 +10,18 @@ var mongoose = require('mongoose');
 router.get('/', function(req,res){
   Circle.find({},function(err,docs){
     res.render('index',{
-      circle: docs.reverse()
+      circle: docs.reverse(),
+      user: req.user
     });
   });
 });
 
-router.get('/mydetail', ensureAuthenticated,function(req,res){
-  Circle.find({},function(err,docs){
-
-  })
+router.get('/mydetail/:id', ensureAuthenticated,function(req,res){
+  User.findOne({_id: req.params.id},function(err,user){
+      res.render('mydetail',{
+        circles: user.joins
+      });
+    });
 });
 
 router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
@@ -32,34 +35,47 @@ router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
 router.get('/detail/:id',ensureAuthenticated, function(req,res) {
   Circle.findOne({_id: req.params.id}, function(err,circle){
     var memberIds = circle.members;
-    console.log(memberIds);
     var members = [];
 //サークルに所属しているメンバーの取得
-    var query = "{$or: [";
-    for(var index in memberIds){
-      query+="{_id:\""+memberIds[index]+"\"}";
-      console.log(memberIds[index]);
-      if(index<memberIds.length-1){
-        query+=",";
-      }
-    }
-    query += "]}";
-
+    // var query = "{$or: [";
+    // for(var index in memberIds){
+    //   query+="{_id:\""+memberIds[index]+"\"}";
+    //   console.log(memberIds[index]);
+    //   if(index<memberIds.length-1){
+    //     query+=",";
+    //   }
+    // }
+    // query += "]}";
+    if (memberIds.length > 0){
+    var query = "{_id:{$in:" + memberIds + "}}";
+    console.log(JSON.stringify(query));
     // console.log(query);
     // 2. クエリを使用して、データを取得
-    User.find(query, function(err, res) {
+    User.find(JSON.stringify(query), function(err, res) {
       // 3. 取得したデータからユーザ名を取得
+      console.log(res);
       for(var index in res){
-        // console.log(res[index].username);
+        console.log(res[index].username);
         members.push(res[index].username);
       }
-      // console.log(members);
+      console.log(members);
     });
+  }else{
+    members = [];
+  };
+    // var query = "{$or: [";
+    // memberIds.forEach(function(id,index){
+    //   query+="{\"_id\":\""+id+"\"}";
+    //   if(index<memberIds.length-1){
+    //     query+=",";
+    //   }
+    // });
+    // query += "]}";
+
 
 //ユーザーがこのサークルにJOINしていた時としていない時
-
-//ユーザーがJOINしていない時(JOINボタンを押した)
-    if (memberIds.indexOf(req.user._id) >= 0){
+    if (memberIds.includes(String(req.user._id))){
+      console.log(memberIds.includes(String(req.user._id)));
       res.render('detail', {
         circlename: circle.circlename,
         members:　members,
@@ -118,7 +134,6 @@ router.post('/list',ensureAuthenticated, function(req,res){
         User.findOne({_id: req.user._id}, function(err,user){
             var joins = user.joins;
             joins.push(circle._id);
-          console.log(joins);
           user.joins = joins;
             user.save();
         });
@@ -200,5 +215,37 @@ function ensureAuthenticated(req,res,next){
 // 		res.redirect('/users/login');
 // 	}
 // }
+
+
+
+
+//
+//
+// var query = "{$or: [";
+// memberIds.forEach(function(id,index){
+//   query+="{\"_id\":\""+id+"\"}";
+//   if(index<memberIds.length-1){
+//     query+=",";
+//   }
+// });
+// query += "]}";
+// console.log(query);
+// // console.log(query);
+// // 2. クエリを使用して、データを取得
+// User.find(query, function(err, res) {
+//   // 3. 取得したデータからユーザ名を取得
+//   for(var index in res){
+//     // console.log(res[index].username);
+//     members.push(res[index].username);
+//   }
+//   console.log(members);
+// });
+
+
+
+
+
+
+
 
 module.exports = router;
