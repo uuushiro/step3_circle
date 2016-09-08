@@ -4,7 +4,8 @@ var User = require('../models/user.js');
 var CircleSchema = mongoose.Schema({
   circlename: {
     type: String,
-    index: true
+    index: true,
+    unique: true
   },
   introduction: {
     type: String

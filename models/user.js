@@ -7,7 +7,8 @@ var Circle = require('../models/circle.js');
 var UserSchema = mongoose.Schema({
   username: {
     type: String,
-    index: true
+    index: true,
+    unique: true
   },
   password: {
     type: String

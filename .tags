@@ -1,23 +1,3 @@
-mongoose	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var mongoose = require('mongoose');$/;"	variable	line:1
-bcrypt	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var bcrypt = require('bcryptjs');$/;"	variable	line:2
-Circle	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var Circle = require('..\/models\/circle.js');$/;"	variable	line:3
-UserSchema	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var UserSchema = mongoose.Schema({$/;"	variable	line:7
-User	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var User = module.exports = mongoose.model('User', UserSchema);$/;"	variable	line:28
-createUser	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.createUser = function(newUser,callback){$/;"	function	line:30
-module.exports.createUser	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var User = module.exports = mongoose.model('User', UserSchema);$/;"	function	line:28
-getUserByUsername	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.getUserByUsername = function(username,callback){$/;"	function	line:40
-module.exports.getUserByUsername.query.username	/Users/matsutaniyushiro/step3_circle/models/user.js	/^  var query = {username: username};$/;"	property	line:41
-module.exports.getUserByUsername	/Users/matsutaniyushiro/step3_circle/models/user.js	/^}$/;"	function	line:37
-getUserById	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.getUserById = function(id,callback){$/;"	function	line:45
-module.exports.getUserById	/Users/matsutaniyushiro/step3_circle/models/user.js	/^}$/;"	function	line:43
-comparePassword	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.comparePassword = function(candidatePassword,hash,callback){$/;"	function	line:49
-module.exports.comparePassword	/Users/matsutaniyushiro/step3_circle/models/user.js	/^}$/;"	function	line:47
-mongoose	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var mongoose = require('mongoose');$/;"	variable	line:1
-User	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:2
-CircleSchema	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var CircleSchema = mongoose.Schema({$/;"	variable	line:4
-Circle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var Circle = module.exports = mongoose.model('Circle', CircleSchema);$/;"	variable	line:16
-createCircle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^module.exports.createCircle = function(newCircle,callback){$/;"	function	line:18
-module.exports.createCircle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var Circle = module.exports = mongoose.model('Circle', CircleSchema);$/;"	function	line:16
 express	/Users/matsutaniyushiro/step3_circle/app.js	/^var express = require('express');$/;"	variable	line:1
 http	/Users/matsutaniyushiro/step3_circle/app.js	/^var http = require('http');$/;"	variable	line:2
 socketio	/Users/matsutaniyushiro/step3_circle/app.js	/^var socketio = require('socket.io');$/;"	variable	line:3
@@ -86,6 +66,26 @@ Circle	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var Circle = requi
 User	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:4
 mongodb	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongodb = require('mongodb');$/;"	variable	line:6
 mongoose	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongoose = require('mongoose');$/;"	variable	line:7
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:184
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:184
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:193
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:258
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:258
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:267
+mongoose	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var mongoose = require('mongoose');$/;"	variable	line:1
+bcrypt	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var bcrypt = require('bcryptjs');$/;"	variable	line:2
+Circle	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var Circle = require('..\/models\/circle.js');$/;"	variable	line:3
+UserSchema	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var UserSchema = mongoose.Schema({$/;"	variable	line:7
+User	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var User = module.exports = mongoose.model('User', UserSchema);$/;"	variable	line:29
+createUser	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.createUser = function(newUser,callback){$/;"	function	line:31
+module.exports.createUser	/Users/matsutaniyushiro/step3_circle/models/user.js	/^var User = module.exports = mongoose.model('User', UserSchema);$/;"	function	line:29
+getUserByUsername	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.getUserByUsername = function(username,callback){$/;"	function	line:41
+module.exports.getUserByUsername.query.username	/Users/matsutaniyushiro/step3_circle/models/user.js	/^  var query = {username: username};$/;"	property	line:42
+module.exports.getUserByUsername	/Users/matsutaniyushiro/step3_circle/models/user.js	/^}$/;"	function	line:38
+getUserById	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.getUserById = function(id,callback){$/;"	function	line:46
+module.exports.getUserById	/Users/matsutaniyushiro/step3_circle/models/user.js	/^}$/;"	function	line:44
+comparePassword	/Users/matsutaniyushiro/step3_circle/models/user.js	/^module.exports.comparePassword = function(candidatePassword,hash,callback){$/;"	function	line:50
+module.exports.comparePassword	/Users/matsutaniyushiro/step3_circle/models/user.js	/^}$/;"	function	line:48
+mongoose	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var mongoose = require('mongoose');$/;"	variable	line:1
+User	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:2
+CircleSchema	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var CircleSchema = mongoose.Schema({$/;"	variable	line:4
+Circle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var Circle = module.exports = mongoose.model('Circle', CircleSchema);$/;"	variable	line:17
+createCircle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^module.exports.createCircle = function(newCircle,callback){$/;"	function	line:19
+module.exports.createCircle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var Circle = module.exports = mongoose.model('Circle', CircleSchema);$/;"	function	line:17

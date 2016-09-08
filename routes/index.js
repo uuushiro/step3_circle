@@ -16,13 +16,65 @@ router.get('/', function(req,res){
   });
 });
 
+router.get('/', function(req,res){
+  Circle.find({},function(err,docs){
+    joinIds = docs.joins;
+    circle = docs.reverse();
+    user: req.user
+    var maleNum = 0;
+    var femaleNum = 0;
+
+    for(var i = 0; i < joinIds.length ;i++){
+      if(joinIds[i] == 'male'){
+        maleNum ++;
+      }else{
+        femaleNum ++;
+      }
+    };
+    res.render('index',{
+      circle: docs.reverse(),
+      user: req.user,
+      maleNum: maleNum,
+      femaleNum: femaleNum
+    });
+  });
+});
+
+
 router.get('/mydetail/:id', ensureAuthenticated,function(req,res){
   User.findOne({_id: req.params.id},function(err,user){
-      res.render('mydetail',{
-        circles: user.joins
-      });
+    var joinIds = user.joins;
+
+    var circles = [];
+
+    if (joinIds.length > 0){
+      console.log(joinIds);
+    // var query = "{ \"_id\": {\"$in\":[" + "\"" + joinIds + "\"" + "]} }";
+    // var query = "{ _id: {$in:" + memberIds + "} }";
+    var query = "{ \"_id\": {\"$in\":[" + "\"" + joinIds + "\"" + "]} }";
+
+    console.log(query);
+    // 2. クエリを使用して、データを取得
+    Circle.find(JSON.parse(query), function(err, res) {
+      // 3. 取得したデータからユーザ名を取得
+      console.log(res);
+      for(var index in res){
+        console.log(res[index].circlename);
+        circles.push(res[index].circlename);
+      }
+      console.log(circles);
     });
+  }else{
+    circles = [];
+  };
+  res.render('mydetail', {
+    circles: circles
+  });
+    });
+
 });
+
+
 
 router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
   Circle.findOne({_id: req.params.id}, function(err,circle){
@@ -35,6 +87,9 @@ router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
 router.get('/detail/:id',ensureAuthenticated, function(req,res) {
   Circle.findOne({_id: req.params.id}, function(err,circle){
     var memberIds = circle.members;
+
+
+
     var members = [];
 //サークルに所属しているメンバーの取得
     // var query = "{$or: [";
@@ -47,10 +102,12 @@ router.get('/detail/:id',ensureAuthenticated, function(req,res) {
     // }
     // query += "]}";
     if (memberIds.length > 0){
-    var query = "{ \"_id\": {\"$in\":" + "\"" + memberIds + "\"" + "} }";
-    var queryS = {_id:{$in:"57ca7ee033a6f42e108acc31"}};
+      console.log(memberIds);
+    var query = "{ \"_id\": {\"$in\":[" + "\"" + memberIds + "\"" + "]} }";
+    // var query = "{ _id: {$in:" + memberIds + "} }";
+
+
     console.log(query);
-    console.log(queryS)
     // 2. クエリを使用して、データを取得
     User.find(JSON.parse(query), function(err, res) {
       // 3. 取得したデータからユーザ名を取得
@@ -112,8 +169,7 @@ router.get('/detail/edit/:id', ensureAuthenticated, function(req,res){
 
 router.post('/list',ensureAuthenticated, function(req,res){
   var circlename = req.body.circlename;
-  // res.render('list');
-
+  console.log(req.body);
   req.checkBody('circlename','CircleName is required').notEmpty();
 
   var errors = req.validationErrors();
