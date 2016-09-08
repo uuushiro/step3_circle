@@ -15,8 +15,8 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 
-// mongoose.connect('mongodb://heroku_rp2b77d0:vgo2sdcnvpr5k61q2eq5jnsetc@ds019946.mlab.com:19946/heroku_rp2b77d0');
-mongoose.connect('mongodb://localhost/loginapp');
+mongoose.connect('mongodb://heroku_sb7tq2fz:83lkv5lq8egvauf5n08gpf78hl@ds023616-a0.mlab.com:23616,ds023616-a1.mlab.com:23616/heroku_sb7tq2fz?replicaSet=rs-ds023616');
+// mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
 
