@@ -47,11 +47,12 @@ router.get('/detail/:id',ensureAuthenticated, function(req,res) {
     // }
     // query += "]}";
     if (memberIds.length > 0){
-    var query = "{_id:{$in:" + memberIds + "}}";
-    console.log(JSON.stringify(query));
-    // console.log(query);
+    var query = "{ \"_id\": {\"$in\":" + "\"" + memberIds + "\"" + "} }";
+    var queryS = {_id:{$in:"57ca7ee033a6f42e108acc31"}};
+    console.log(query);
+    console.log(queryS)
     // 2. クエリを使用して、データを取得
-    User.find(JSON.stringify(query), function(err, res) {
+    User.find(JSON.parse(query), function(err, res) {
       // 3. 取得したデータからユーザ名を取得
       console.log(res);
       for(var index in res){
