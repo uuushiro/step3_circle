@@ -12,21 +12,27 @@ router.get('/', function(req,res){
     joinIds = docs.joins;
     circle = docs.reverse();
     user: req.user
-    var maleNum = 0;
-    var femaleNum = 0;
+
     var genders = [];
-//男子の数、女子の数を取得する
+//男子の数、女子の数を取得したいができない。maleNum、femaleNumが0のまま
     for(var i = 0; i<docs.length; i++){
+      var maleNum = 0;
+      var femaleNum = 0;
       var memberIds = docs[i].members;
       var query = "{ \"_id\": {\"$in\":" +  JSON.stringify(memberIds) + "} }";
       User.find(JSON.parse(query),function(err,members){
         // console.log(members);
         for(var index in members){
-          genders.push(members[index]["gender"]);
-        }
-        console.log(genders);
+          if (members[index]["gender"] === 'male'){
+            maleNum ++;
+          }else{
+            femaleNum ++;
+          }
+        };
       });
     }
+    console.log(maleNum);
+    console.log(femaleNum);
 
 
 
