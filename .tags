@@ -58,6 +58,15 @@ CircleSchema	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var CircleS
 Circle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var Circle = module.exports = mongoose.model('Circle', CircleSchema);$/;"	variable	line:17
 createCircle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^module.exports.createCircle = function(newCircle,callback){$/;"	function	line:19
 module.exports.createCircle	/Users/matsutaniyushiro/step3_circle/models/circle.js	/^var Circle = module.exports = mongoose.model('Circle', CircleSchema);$/;"	function	line:17
+express	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var express = require('express');$/;"	variable	line:1
+router	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var router = express.Router();$/;"	variable	line:2
+Circle	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var Circle = require('..\/models\/circle.js');$/;"	variable	line:3
+User	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:4
+mongodb	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var mongodb = require('mongodb');$/;"	variable	line:6
+mongoose	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var mongoose = require('mongoose');$/;"	variable	line:7
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:256
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:256
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:265
 express	/Users/matsutaniyushiro/step3_circle/app.js	/^var express = require('express');$/;"	variable	line:1
 http	/Users/matsutaniyushiro/step3_circle/app.js	/^var http = require('http');$/;"	variable	line:2
 socketio	/Users/matsutaniyushiro/step3_circle/app.js	/^var socketio = require('socket.io');$/;"	variable	line:3
@@ -78,21 +87,15 @@ routes	/Users/matsutaniyushiro/step3_circle/app.js	/^var routes = require('.\/ro
 users	/Users/matsutaniyushiro/step3_circle/app.js	/^var users = require('.\/routes\/users');$/;"	variable	line:24
 app	/Users/matsutaniyushiro/step3_circle/app.js	/^var app = express();$/;"	variable	line:27
 errorFormatter	/Users/matsutaniyushiro/step3_circle/app.js	/^  errorFormatter: function(param, msg, value) {$/;"	function	line:55
-express	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var express = require('express');$/;"	variable	line:1
-router	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var router = express.Router();$/;"	variable	line:2
-Circle	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var Circle = require('..\/models\/circle.js');$/;"	variable	line:3
-User	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:4
-mongodb	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var mongodb = require('mongodb');$/;"	variable	line:6
-mongoose	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^var mongoose = require('mongoose');$/;"	variable	line:7
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:256
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:256
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/hoge.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:265
 express	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var express = require('express');$/;"	variable	line:1
 router	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var router = express.Router();$/;"	variable	line:2
 Circle	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var Circle = require('..\/models\/circle.js');$/;"	variable	line:3
 User	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var User = require('..\/models\/user.js');$/;"	variable	line:4
 mongodb	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongodb = require('mongodb');$/;"	variable	line:6
 mongoose	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^var mongoose = require('mongoose');$/;"	variable	line:7
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:245
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:245
-ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:254
+genderPercentage	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^  function genderPercentage(){$/;"	function	line:47
+rendermyDetail	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^  function rendermyDetail(){$/;"	function	line:87
+renderDetail	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function renderDetail(){$/;"	function	line:147
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:275
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^function ensureAuthenticated(req,res,next){$/;"	function	line:275
+ensureAuthenticated	/Users/matsutaniyushiro/step3_circle/routes/index.js	/^\/\/ function ensureAuthenticated(req, res, next){$/;"	function	line:284

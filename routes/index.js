@@ -11,10 +11,24 @@ router.get('/', function(req,res){
   Circle.find({},function(err,docs){
     joinIds = docs.joins;
     circle = docs.reverse();
-    console.log(circle);
     user: req.user
     var maleNum = 0;
     var femaleNum = 0;
+    var genders = [];
+//男子の数、女子の数を取得する
+    for(var i = 0; i<docs.length; i++){
+      var memberIds = docs[i].members;
+      var query = "{ \"_id\": {\"$in\":" +  JSON.stringify(memberIds) + "} }";
+      User.find(JSON.parse(query),function(err,members){
+        // console.log(members);
+        for(var index in members){
+          genders.push(members[index]["gender"]);
+        }
+        console.log(genders);
+      });
+    }
+
+
 
   if(joinIds > 0){
     for(var i = 0; i < joinIds.length ;i++){
@@ -24,13 +38,22 @@ router.get('/', function(req,res){
         femaleNum ++;
       }
     };
+    console.log(maleNum);
   };
+
+  genderPercentage()
+
+
+  function genderPercentage(){
     res.render('index',{
       circle: docs.reverse(),
       user: req.user,
       maleNum: maleNum,
       femaleNum: femaleNum
     });
+  }
+
+
   });
 });
 
@@ -55,15 +78,19 @@ router.get('/mydetail/:id', ensureAuthenticated,function(req,res){
         circles.push(res[index]);
       }
       console.log(circles);
+      rendermyDetail(circles);
     });
   }else{
     circles = [];
   };
+
+  function rendermyDetail(){
   res.render('mydetail', {
     circles: circles
-  });
     });
+  }
 
+  });
 });
 
 router.get('/detail/:id/chat',ensureAuthenticated, function(req,res){
@@ -102,7 +129,8 @@ router.get('/detail/:id',ensureAuthenticated, function(req,res) {
       for(var index in res){
         members.push(res[index].username);
       }
-      console.log(members);
+      console.log("test",members);
+      renderDetail(members);//←ここを追加
     });
   }else{
     members = [];
@@ -116,7 +144,7 @@ router.get('/detail/:id',ensureAuthenticated, function(req,res) {
     // });
     // query += "]}";
 
-
+function renderDetail(){
 //ユーザーがこのサークルにJOINしていた時としていない時
     if (memberIds.includes(String(req.user._id))){
       console.log(memberIds.includes(String(req.user._id)));
@@ -137,6 +165,8 @@ router.get('/detail/:id',ensureAuthenticated, function(req,res) {
         active: ""
       });
     }
+}
+
   });
 });
 
