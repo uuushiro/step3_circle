@@ -4,3 +4,32 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+name	/Users/matsutaniyushiro/step3_circle/package.json	/^  "name": "circle",$/;"	function	line:2
+version	/Users/matsutaniyushiro/step3_circle/package.json	/^  "version": "0.0.0",$/;"	function	line:3
+private	/Users/matsutaniyushiro/step3_circle/package.json	/^  "private": true,$/;"	function	line:4
+scripts	/Users/matsutaniyushiro/step3_circle/package.json	/^  "scripts": {$/;"	function	line:5
+start	/Users/matsutaniyushiro/step3_circle/package.json	/^    "start": "node .\/bin\/www"$/;"	function	line:6
+dependencies	/Users/matsutaniyushiro/step3_circle/package.json	/^  "dependencies": {$/;"	function	line:8
+bcryptjs	/Users/matsutaniyushiro/step3_circle/package.json	/^    "bcryptjs": "*",$/;"	function	line:9
+body-parser	/Users/matsutaniyushiro/step3_circle/package.json	/^    "body-parser": "*",$/;"	function	line:10
+connect-flash	/Users/matsutaniyushiro/step3_circle/package.json	/^    "connect-flash": "*",$/;"	function	line:11
+cookie-parser	/Users/matsutaniyushiro/step3_circle/package.json	/^    "cookie-parser": "~1.4.1",$/;"	function	line:12
+debug	/Users/matsutaniyushiro/step3_circle/package.json	/^    "debug": "~2.2.0",$/;"	function	line:13
+express	/Users/matsutaniyushiro/step3_circle/package.json	/^    "express": "*",$/;"	function	line:14
+express-handlebars	/Users/matsutaniyushiro/step3_circle/package.json	/^    "express-handlebars": "*",$/;"	function	line:15
+express-messages	/Users/matsutaniyushiro/step3_circle/package.json	/^    "express-messages": "*",$/;"	function	line:16
+express-session	/Users/matsutaniyushiro/step3_circle/package.json	/^    "express-session": "*",$/;"	function	line:17
+express-validator	/Users/matsutaniyushiro/step3_circle/package.json	/^    "express-validator": "*",$/;"	function	line:18
+hbs	/Users/matsutaniyushiro/step3_circle/package.json	/^    "hbs": "~4.0.0",$/;"	function	line:19
+http	/Users/matsutaniyushiro/step3_circle/package.json	/^    "http": "0.0.0",$/;"	function	line:20
+mongodb	/Users/matsutaniyushiro/step3_circle/package.json	/^    "mongodb": "*",$/;"	function	line:21
+mongoose	/Users/matsutaniyushiro/step3_circle/package.json	/^    "mongoose": "*",$/;"	function	line:22
+morgan	/Users/matsutaniyushiro/step3_circle/package.json	/^    "morgan": "~1.7.0",$/;"	function	line:23
+passport	/Users/matsutaniyushiro/step3_circle/package.json	/^    "passport": "*",$/;"	function	line:24
+passport-http	/Users/matsutaniyushiro/step3_circle/package.json	/^    "passport-http": "*",$/;"	function	line:25
+passport-local	/Users/matsutaniyushiro/step3_circle/package.json	/^    "passport-local": "*",$/;"	function	line:26
+serve-favicon	/Users/matsutaniyushiro/step3_circle/package.json	/^    "serve-favicon": "~2.3.0",$/;"	function	line:27
+socket.io	/Users/matsutaniyushiro/step3_circle/package.json	/^    "socket.io": "~1.4.8"$/;"	function	line:28
+engines	/Users/matsutaniyushiro/step3_circle/package.json	/^  "engines": {$/;"	function	line:30
+node	/Users/matsutaniyushiro/step3_circle/package.json	/^  "node": "6.5.0",$/;"	function	line:31
+npm	/Users/matsutaniyushiro/step3_circle/package.json	/^  "npm":  "*"$/;"	function	line:32
